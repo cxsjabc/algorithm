@@ -31,5 +31,6 @@ int main()
 {
 	PN(gcd(12, 8));	
 	PN(gcd1(12, 8));	
+	PN(gcd1(12, 4));	
 	return 0;
 }
