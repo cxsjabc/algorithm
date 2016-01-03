@@ -66,6 +66,24 @@ LPNode	list_insert(LHead list, LPNode node, int data)
 	return new_node;
 }
 
+void	list_delete(LHead list, int data)
+{
+	LPNode node = list->next;
+	LPNode prev = list;
+
+	while(node) {
+		if(node->data == data) {
+			LPNode next = node->next;
+			prev->next = next;
+			free(node);
+			node = next;
+		} else {
+			prev = node;
+			node = node->next;
+		}
+	}
+}
+
 LPNode	list_get_prev(LHead list, LPNode node)
 {
 	LPNode prev = NULL;
@@ -116,8 +134,9 @@ int main()
 			
 	PN(list_is_empty(head));
 	list_insert(head, head->next, 2);
-	list_show(head);
 	list_insert(head, head->next, 3);
+	list_show(head);
+	list_delete(head, 2);
 	list_show(head);
 	list_free(head);
 
