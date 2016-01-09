@@ -1,6 +1,8 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#include <stdio.h>
+
 #define PN(n)	printf(#n " is %d\n", (n));
 #define PU(n)	printf(#n " is %u\n", (n));
 #define PL(n)	printf(#n " is %ld\n", (n));
@@ -58,5 +60,7 @@ static int max_in_arr(int arr[], int start, int end)
 	}
 	return max_index;
 }
+
+void print_by_byte(const void *p, int size);
 
 #endif
