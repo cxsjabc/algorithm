@@ -66,7 +66,7 @@ int		rqueue_enque(PRQueue rqueue, int data)
 	int rear  = rqueue->rear;
 
 	if(rqueue->size < rqueue->capacity) {
-		if(rear == rqueue->capacity)
+		if(rear == rqueue->capacity) // notice: not rqueue->size
 			rear = 0;
 
 		rqueue->data[rear] = data;
