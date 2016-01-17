@@ -37,10 +37,22 @@ static int pow1(int x, int n)
 	return t;
 }
 
+int	is_2_power(int n)
+{
+	if(n == 1)
+		return 1;
+	return (n & (n - 1)) == 0;
+}
+
 int main()
 {
+	int i = 1;
 	PN(pow1(2, 10));	
 	PN(pow1(2, 20));	
 	PN(pow1(2, 30));	
+
+	for(; i < 100; ++i)
+		if(is_2_power(i))
+			printf("is_2_power:%d\n", i);
 	return 0;
 }

@@ -59,9 +59,12 @@ LPNode	list_insert(LHead list, LPNode node, int data)
 	
 	if(!new_node)
 		return NULL;
+	if(prev == NULL)
+		prev = list;
+
+	new_node->next = list->next;	
 	prev->next = new_node;
 	new_node->data = data;
-	new_node->next = node;	
 
 	return new_node;
 }
@@ -108,6 +111,28 @@ void list_show(LHead list)
 	printf("\n");
 }
 
+int		list_append(LHead list, int data)
+{
+	LPNode node = list;
+	LPNode append_node;
+
+	while(node->next != NULL) {
+		node = node->next;
+	}
+
+	append_node = (LPNode)malloc(sizeof(LNode));
+	if(!append_node)
+		goto label_alloc_fail;
+	append_node->data = data;
+	append_node->next = NULL;
+
+	node->next = append_node;
+	return 1;
+
+label_alloc_fail:
+	return 0;
+}
+
 void 	list_free(LHead list) 
 {
 	LPNode curr = list;
@@ -121,3 +146,66 @@ void 	list_free(LHead list)
 	free(curr);
 }
 
+// the list is asc
+LHead		list_merge(LHead list1, LHead list2)
+{
+	LPNode node1, node2;
+	LHead	list;	
+	int append_ret;
+	
+	//printf("before list create\n");
+	list = (LHead)list_create(NULL);
+	if(!list)
+		goto label_alloc_fail;
+
+	//printf("after list create\n");
+	node1 = list1->next;
+	node2 = list2->next;
+	
+	//printf("before merge...\n");
+	while(node1 != NULL && node2 != NULL) {
+		//printf("node1->data:%d, node2->data:%d\n", node1->data, node2->data);
+		if(node1->data <= node2->data) {
+			append_ret = list_append(list, node1->data);
+			if(!append_ret)
+				goto label_alloc_fail;
+			node1 = node1->next;
+		}
+		else {
+			append_ret = list_append(list, node2->data);
+			if(!append_ret)
+				goto label_alloc_fail;
+			node2 = node2->next;
+		}
+	}
+
+	//printf("after merge...\n");
+	if(node1 == NULL) {
+		while(node2 != NULL) {
+			append_ret = list_append(list, node2->data);
+			if(!append_ret)
+				goto label_alloc_fail;
+			//printf("append data:%d\n", node2->data);
+			node2 = node2->next;
+		}
+	}
+
+	//printf("after merge1...\n");
+	if(node2 == NULL) {
+		while(node1 != NULL) {
+			append_ret = list_append(list, node1->data);
+			if(!append_ret)
+				goto label_alloc_fail;
+			//printf("append data:%d\n", node1->data);
+			node1 = node1->next;
+		}
+	}
+	
+	return list;
+
+label_alloc_fail:
+	if(list)
+		list_free(list);
+	return NULL;	
+
+}

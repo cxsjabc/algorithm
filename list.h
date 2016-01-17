@@ -25,7 +25,11 @@ LPNode	list_insert(LHead list, LPNode node, int data);
 void	list_delete(LHead list, int data);
 LPNode	list_get_prev(LHead list, LPNode node);
 
+int		list_append(LHead list, int data);
+
 void 	list_show(LHead list);
 void 	list_free(LHead list);
+
+LHead	list_merge(LHead list1, LHead list2);
 
 #endif
