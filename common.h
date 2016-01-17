@@ -3,11 +3,79 @@
 
 #include <stdio.h>
 
+
 #define PN(n)	printf(#n " is %d\n", (n));
 #define PU(n)	printf(#n " is %u\n", (n));
 #define PL(n)	printf(#n " is %ld\n", (n));
+#define PP(n)	printf(#n " is %p\n", (n));
 
 #define P_HERE()	printf("execute %s@%d\n", __FUNCTION__, __LINE__);
+
+#define	LOG		printf
+
+#ifndef _LOG_ENABLE
+#define _LOG_ENABLE 1
+#endif
+// it needs macro: _LOG_ENABLE
+#define	LOG_HERE	do { \
+						if(_LOG_ENABLE && _LOG_LEVEL == LOG_LEVEL_VERBOSE) \
+							printf("Log Here:%s@%d\n", __FUNCTION__, __LINE__); \
+					} while(0)
+
+enum 
+{
+	LOG_LEVEL_VERBOSE,
+	LOG_LEVEL_DEBUG,
+	LOG_LEVEL_INFO,
+	LOG_LEVEL_WARNING,
+	LOG_LEVEL_ERROR,
+	LOG_LEVEL_FATAL,
+
+	LOG_LEVEL_MAX
+};
+
+#ifndef _LOG_LEVEL
+#define _LOG_LEVEL LOG_LEVEL_DEBUG
+#endif
+// log level: VERBOSE,DEBUG,INFO,WARNING,ERROR,FATAL
+// it needs macro: _LOG_LEVEL
+#define LOG_V(fmt, args...) \
+		do { \
+			if(_LOG_ENABLE && _LOG_LEVEL == LOG_LEVEL_VERBOSE) \
+				printf("[V]" fmt "\n", ##args); \
+		} while(0)	
+
+#define LOG_D(fmt, args...) \
+		do { \
+			if(_LOG_ENABLE && _LOG_LEVEL <= LOG_LEVEL_DEBUG) \
+				printf("[D]" fmt "\n", ##args); \
+		} while(0)	
+
+#define LOG_I(fmt, args...) \
+		do { \
+			if(_LOG_ENABLE && _LOG_LEVEL <= LOG_LEVEL_INFO) \
+				printf("[I]" fmt "\n", ##args); \
+		} while(0)	
+
+#define LOG_W(fmt, args...) \
+		do { \
+			if(_LOG_ENABLE && _LOG_LEVEL <= LOG_LEVEL_WARNING) \
+				printf("[W]" fmt "\n", ##args); \
+		} while(0)	
+
+
+#define LOG_E(fmt, args...) \
+		do { \
+			if(_LOG_ENABLE && _LOG_LEVEL <= LOG_LEVEL_ERROR) \
+				printf("[E]" fmt "\n", ##args); \
+		} while(0)	
+
+
+#define LOG_F(fmt, args...) \
+		do { \
+			if(_LOG_ENABLE && _LOG_LEVEL <= LOG_LEVEL_FATAL) \
+				printf("[F]" fmt "\n", ##args); \
+		} while(0)	
 
 #ifndef MAX
 #define MAX(a, b)  ((a) > (b) ? (a) : (b))
