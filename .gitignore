@@ -1,0 +1,14 @@
+
+*.o
+
+*.class
+
+!*gitignore
+
+!*.c
+!*.h
+
+!*.cpp
+!*.java
+
+!Makefile
