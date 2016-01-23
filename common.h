@@ -2,7 +2,9 @@
 #define COMMON_H
 
 #include <stdio.h>
-
+#include <string.h>
+#include <stdlib.h>
+#include <limits.h>
 
 #define PN(n)	printf(#n " is %d\n", (n));
 #define PU(n)	printf(#n " is %u\n", (n));
