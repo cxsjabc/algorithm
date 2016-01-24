@@ -5,6 +5,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <time.h>
+
+#include "time_xi.h"
+#include "array.h"
 
 #define PN(n)	printf(#n " is %d\n", (n));
 #define PU(n)	printf(#n " is %u\n", (n));
