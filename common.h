@@ -11,6 +11,7 @@
 #include "array.h"
 
 #define PN(n)	printf(#n " is %d\n", (n));
+#define PC(n)	printf(#n " is %c\n", (n));
 #define PU(n)	printf(#n " is %u\n", (n));
 #define PL(n)	printf(#n " is %ld\n", (n));
 #define PP(n)	printf(#n " is %p\n", (n));
@@ -120,6 +121,7 @@ static inline void print_arr(int *arr, int size)
 	printf("\n");
 }
 
+#if 0
 static int max_in_arr(int arr[], int start, int end)
 {
 	int max = arr[start];
@@ -134,6 +136,8 @@ static int max_in_arr(int arr[], int start, int end)
 	}
 	return max_index;
 }
+
+#endif
 
 void print_by_byte(const void *p, int size);
 
