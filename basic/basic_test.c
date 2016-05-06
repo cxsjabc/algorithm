@@ -55,12 +55,18 @@ int main()
 	//int for; 		// CE
 	//int printf; 	// CE
 	//int while;	// CE
-	
+
+#if 0	
 	{
 		float f = 1. / 3;
 		printf("%3.1f,%.f,%.-1f\n", f, f, f);		
 		printf("%E,%e,%F,%G,%g\n", f, f, f, f, f);
 	}
+#endif
+
+#if 1
+	printf("sizeof(long long):%lu, sizeof(long):%lu\n", sizeof(long long), sizeof(long));
+#endif
 
 	return 0;
 }
