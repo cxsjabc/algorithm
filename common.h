@@ -16,6 +16,8 @@
 #define PL(n)	printf(#n " is %ld\n", (n));
 #define PP(n)	printf(#n " is %p\n", (n));
 
+#define PD(n)	printf(#n " is %f\n", (n));
+
 #define P_HERE()	printf("execute %s@%d\n", __FUNCTION__, __LINE__);
 
 #define	LOG		printf
