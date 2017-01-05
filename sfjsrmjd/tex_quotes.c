@@ -8,9 +8,19 @@ int main()
 	char temp[128];
 	int first_quote = 1;
 	char *s = temp;
+	int c;
 	//scanf("%s", temp);
-	strcpy(s, str);	
+	//strcpy(s, str);	
+	while((c = fgetc(stdin)) != EOF) {
+		if(c != '\"')
+			printf("%c", c);
+		else {
+			printf("%s", first_quote ? "``" : "\'\'");
+			first_quote = !first_quote;
+		}
+	}
 
+#if 0
 	while(*s) {
 		if(*s == '\"') {
 			if(first_quote) {
@@ -26,5 +36,7 @@ int main()
 		}
 		++s;
 	}
+#endif
+
     return 0;
 }
