@@ -13,7 +13,7 @@
 #define FATAL		60
 
 #ifndef LOG_LEVEL
-#define LOG_LEVEL  20
+#define LOG_LEVEL 	VERBOSE 
 #endif
 
 #define log_v(fmt, ...)	do { if(LOG_LEVEL <= VERBOSE)	printf(fmt, ##__VA_ARGS__); } while(0)

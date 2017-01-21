@@ -13,7 +13,7 @@ int main()
 	scanf("%s", s);
 
 	len = strlen(s);
-	for(i = 0; i < len / 2; ++i) {
+	for(i = 0; i < (len + 1) / 2; ++i) {
 		if(s[i] != s[len - 1 - i]) {
 			p = 0;
 			log_d("p=0:i:%d, s[i]:%c, s[len - 1 - i]:%c\n", i, s[i], s[len - 1 - i]);

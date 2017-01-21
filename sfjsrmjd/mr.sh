@@ -6,4 +6,4 @@ then
 	exit -1
 fi
 
-gcc -g -o $1 $1.c && ./$1
+gcc -Wall -g -o $1 $1.c && ./$1

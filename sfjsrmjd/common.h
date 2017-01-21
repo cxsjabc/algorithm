@@ -3,7 +3,9 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 #include "log.h"
+#include "assert.h"
 
 #endif
