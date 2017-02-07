@@ -5,6 +5,11 @@
 
 bin/
 
+
+*.dSYM/
+
+*.elf
+
 !*gitignore
 
 !*.c

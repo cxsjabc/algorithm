@@ -9,7 +9,7 @@ int main()
 	while((c = getchar()) != EOF) {
 		for(i = 0; s[i] && s[i] != c; ++i) ;
 		if(s[i] && s[i] == c)
-			printf("%c", s[i - 1]);
+			printf("%c\n", s[i - 1]);
 	}
     return 0;
 }
