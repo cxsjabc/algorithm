@@ -2,7 +2,7 @@
 
 using namespace std;
 
-#include "common.h"
+#include "common_local.h"
 
 class B
 {

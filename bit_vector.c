@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "common.h"
+#include "common_local.h"
 
 // each bit represents a number
 // eg:  0 1 1 0 1 0 0 1   means numbers: 1 2 4 7

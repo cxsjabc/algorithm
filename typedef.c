@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "common.h"
+#include "common_local.h"
 
 // typedef long short;  // it will cause Compile Error
 

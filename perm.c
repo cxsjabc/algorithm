@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "common.h"
+#include "common_local.h"
 
 void perm(int arr[], int cnt, int start, int end)
 {

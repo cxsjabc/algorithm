@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "common.h"
+#include "common_local.h"
 
 int is_increased_arr(int arr[], int cnt)
 {

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "common.h"
+#include "common_local.h"
 
 void bubble_sort(int arr[], int size)
 {

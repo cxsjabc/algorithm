@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common_local.h"
 
 int is_circular_rotation(const char *s1, const char *s2)
 {

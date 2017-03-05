@@ -1,5 +1,5 @@
 #define LOG_LEVEL 20 
-#include "common.h"
+#include "common_local.h"
 
 int arr[1000][10];
 

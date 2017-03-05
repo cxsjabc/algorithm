@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "common.h"
+#include "common_local.h"
 
 void subsets(int arr[], int size, int start, int end, int *includes)
 {

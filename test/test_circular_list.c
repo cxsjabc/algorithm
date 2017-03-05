@@ -1,7 +1,7 @@
 #define _LOG_ENABLE 1
 #define	_LOG_LEVEL LOG_LEVEL_INFO
 
-#include "common.h"
+#include "common_local.h"
 
 #include "circular_list.h"
 

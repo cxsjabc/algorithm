@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common_local.h"
 
 void arr_transposition(int *arr, int row, int col)
 {

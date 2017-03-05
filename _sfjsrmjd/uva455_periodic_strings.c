@@ -1,6 +1,6 @@
 #define LOG_LEVEL 10
 
-#include "common.h"
+#include "common_local.h"
 
 #define FORCE_TEST 1
 

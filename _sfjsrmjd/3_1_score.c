@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common_local.h"
 
 const char *s = "OOXXOXXOOO";
 

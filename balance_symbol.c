@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "common.h"
+#include "common_local.h"
 #include "stack.h"
 
 int is_balanced(const char *s)

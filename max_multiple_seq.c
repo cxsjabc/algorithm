@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <stdlib.h>
 
-#include "common.h"
+#include "common_local.h"
 
 //#define PN(n)	printf(#n " is %d\n", (n));
 // just copied, not verified

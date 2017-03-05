@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "tree.h"
 
-#include "common.h"
+#include "common_local.h"
 
 
 void tree_make_empty(PTree tree)

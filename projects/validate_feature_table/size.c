@@ -1,6 +1,6 @@
 #include <limits.h>
 #include "size.h"
-#include "common.h"
+#include "common_local.h"
 
 // the array should sync with SIZE_RATIO
 const SizeRatio gSizeRatioArr[] = 

@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common_local.h"
 
 int str_1_cnt(const char *s)
 {

@@ -1,5 +1,5 @@
 #include "str_util.h"
-#include "common.h"
+#include "common_local.h"
 #include "size.h"
 #include <stdlib.h>
 #include <stdio.h>

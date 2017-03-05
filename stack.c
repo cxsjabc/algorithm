@@ -2,7 +2,7 @@
 #include <string.h>
 
 #include "stack.h"
-#include "common.h"
+#include "common_local.h"
 
 
 STACK *stack_create(int size)

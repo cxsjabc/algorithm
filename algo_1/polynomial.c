@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "common.h"
+#include "common_local.h"
 
 double polynomial(double arr[], int cnt, double x)
 {

@@ -3,7 +3,7 @@
 **/
 
 #define LOG_LEVEL VERBOSE
-#include "common.h"
+#include "common_local.h"
 
 int less(const char *s, int p, int q)
 {

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "common.h"
+#include "common_local.h"
 #include "rqueue.h"
 
 PRQueue	rqueue_create(int size)

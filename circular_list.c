@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "common.h"
+#include "common_local.h"
 #include "circular_list.h"
 
 LHead 	clist_create(LPNode p)

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "common.h"
+#include "common_local.h"
 
 
 int *eratosthenes(int n, int *cnt)

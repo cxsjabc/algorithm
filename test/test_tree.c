@@ -2,7 +2,7 @@
 #define	_LOG_LEVEL  LOG_LEVEL_WARNING
 
 #include "tree.h"
-#include "common.h"
+#include "common_local.h"
 
 int main()
 {

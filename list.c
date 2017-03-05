@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "common.h"
+#include "common_local.h"
 #include "list.h"
 
 LHead 	list_create(LPNode p)

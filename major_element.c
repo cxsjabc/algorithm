@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
-#include "common.h"
+#include "common_local.h"
 
 
 int find_major_element(int arr[], int cnt, int *found)

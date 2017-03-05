@@ -1,6 +1,6 @@
 #define _LOG_LEVEL	LOG_LEVEL_INFO
 
-#include "common.h"
+#include "common_local.h"
 #include "array.h"
 
 // start_value: 4, size: 5 , arr: 4 5 6 7 8 

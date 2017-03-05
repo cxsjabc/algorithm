@@ -1,5 +1,5 @@
 #define LOG_LEVEL DEBUG
-#include "common.h"
+#include "common_local.h"
 
 // arr[0...size - 1]    x4 x3 x2... x0
 int horner(int arr[], int size, int x)

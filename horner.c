@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "common.h"
+#include "common_local.h"
 
 // the array:  arr[0] + arr[1] x + arr[2] x^2 + ... + arr[cnt - 1] x ^ (cnt - 1)
 int horner(int arr[], int cnt, int x)

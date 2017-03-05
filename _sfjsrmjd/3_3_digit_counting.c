@@ -1,5 +1,5 @@
 #define LOG_LEVEL DEBUG
-#include "common.h"
+#include "common_local.h"
 
 int main()
 {

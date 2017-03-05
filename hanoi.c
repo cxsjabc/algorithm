@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "common.h"
+#include "common_local.h"
 
 
 void hanoi(int from, int use, int dest, int cnt)

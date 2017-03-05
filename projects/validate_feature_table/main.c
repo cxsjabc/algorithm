@@ -2,7 +2,7 @@
 #include <string.h>
 #include "size.h"
 #include "str_util.h"
-#include "common.h"
+#include "common_local.h"
 #include "validate_info.h"
 #include "process_internal.h"
 

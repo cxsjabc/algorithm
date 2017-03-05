@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common_local.h"
 
 const int D = 20;	// max depth
 int s[1 << D];		// store the node status

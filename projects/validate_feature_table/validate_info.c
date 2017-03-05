@@ -1,5 +1,5 @@
 #include "validate_info.h"
-#include "common.h"
+#include "common_local.h"
 #include "size.h"
 
 int validate_align_xx(const char *s, int align)
