@@ -6,4 +6,8 @@ then
 	exit -1
 fi
 
-g++ -Wall -g -o $1.elf $1.cpp && ./$1.elf
+source common.sh
+DEST=$1
+shift
+
+g++ $@ -x c++ -Wall -g -o $DEST.elf $DEST.cpp ${COMMON_C} && ./$DEST.elf

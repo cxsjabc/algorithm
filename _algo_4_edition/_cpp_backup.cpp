@@ -1,4 +1,5 @@
 #include <iostream>
+#include "common_local.h"
 
 using namespace std;
 
