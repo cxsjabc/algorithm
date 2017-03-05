@@ -6,4 +6,9 @@ then
 	exit -1
 fi
 
-gcc -Wall -g -o $1.elf $1.c && ./$1.elf
+COMMON_C="../../common/common.c ../../common/gen.c ../../common/arr.c"
+
+DEST=$1
+shift
+
+gcc $@ -Wall -g -o $DEST.elf $DEST.c ${COMMON_C} && ./$DEST.elf
