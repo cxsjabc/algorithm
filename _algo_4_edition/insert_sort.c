@@ -17,6 +17,25 @@ void insert_sort(int arr[], int size)
 	}	
 }
 
+void insert_sort1(int arr[], int size)
+{
+	int i, j;
+	for(i = 1; i < size; ++i) {
+		#if 0
+		for(j = i; j > 0; --j) {
+			if(arr[j] < arr[j - 1])
+				SWAP(&arr[j], &arr[j - 1]);
+			else
+				break;
+		}
+		#else
+		for(j = i; j > 0 && arr[j] < arr[j - 1]; --j)
+				SWAP(&arr[j], &arr[j - 1]);
+			
+		#endif
+	}	
+}
+
 int main()
 {
 	int arr[1000];
@@ -26,7 +45,7 @@ int main()
 	print_arr(arr, size);
 
 	TS(1)
-	insert_sort(arr, size);	
+	insert_sort1(arr, size);	
 	TE
 
 	print_arr(arr, size);
