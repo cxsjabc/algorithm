@@ -53,7 +53,12 @@ int main()
 	// validate next element is not 2 times than the previous element
 	PN(validate_smaller(fabnaci_arr, 128, 2));	
 #endif
-
+#if 1
 	PN(fabnaci1(128));
+#endif	
+	MATRIX_2 m = {1, 1, 1, 0};
+	MATRIX_2 temp = matrix2_power(&m, 4);
+	matrix2_show(&temp);
+
 	return 0;
 }

@@ -1,3 +1,4 @@
+#define _LOG_LEVEL LOG_V
 #include <stdio.h>
 #include <limits.h>
 
@@ -7,7 +8,7 @@
 
 int max_sub_seq_sum(int arr[], int cnt, int *start, int *end)
 {
-	int ret;
+	//int ret;
 	int max = arr[0], temp_max;
 	int i, j;
 
@@ -41,7 +42,7 @@ int max_sub_seq_sum1(int arr[], int cnt, int *ps, int *pe, int start, int end)
 	int middle, max_left_sum, max_right_sum;
 	int max_left_border_sum, max_right_border_sum;
 	int left_border_sum, right_border_sum;
-	int i, j;
+	int i;
 	int max_ps_left, max_pe_left;
 	int max_ps_right, max_pe_right;
 	int max_ps_border, max_pe_border;
@@ -104,6 +105,38 @@ int max_sub_seq_sum2(int arr[], int cnt)
 	return max;
 }
 
+int max_sub_seq_sum3(int arr[], int cnt)
+{
+	int i;
+	int max;
+	int *temp_arr;
+
+	temp_arr = (int *)malloc(sizeof(int) * cnt);
+	ASSERT(temp_arr);
+
+	max = temp_arr[0] = arr[0];
+	
+	for(i = 1; i < cnt; ++i) {
+		#if 0	// wrong!
+			log_v("cur max:%d, arr[%d]:%d, max + arr[i]:%d\n", max, i, arr[i], max + arr[i]);
+			max = MAX3(max, arr[i], max + arr[i]);	// miss one condition which the previous max isn't the subset array ends with index i!
+		#else
+			temp_arr[i] = arr[i];
+			if(temp_arr[i - 1] > 0)
+				temp_arr[i] += temp_arr[i - 1];
+			else
+				temp_arr[i] = arr[i];
+
+			if(temp_arr[i] > max)
+				max = temp_arr[i];
+		#endif
+		
+	}
+
+	free(temp_arr);		
+	return max;
+}
+
 int main()
 {
 	int arr[] = {12, -14, 1, 20, -34, 0, 1};
@@ -127,7 +160,8 @@ int main()
 
 	max = -1;
 	start = end = -1;
-	max = max_sub_seq_sum2(arr, cnt);
+	print_arr(arr, cnt);
+	max = max_sub_seq_sum3(arr, cnt);
 	PN(max);
 
 
