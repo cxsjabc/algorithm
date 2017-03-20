@@ -142,6 +142,11 @@ int main()
 	int arr[] = {12, -14, 1, 20, -34, 0, 1};
 	int cnt = sizeof(arr) / sizeof(arr[0]);
 	int max, start, end;
+	int temp = 1;
+	
+	temp = INT_MAX;
+	PD(temp);
+
 #if 0
 	max = max_sub_seq_sum(arr, cnt, &start, &end);
 	PN(max);
