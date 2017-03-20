@@ -9,6 +9,7 @@ bin/
 *.dSYM/
 
 *.elf
+*.precessed
 
 !*gitignore
 
