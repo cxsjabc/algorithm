@@ -9,7 +9,12 @@ int main()
 	long s;
 
 	// bugs: maybe blanks..	
-	scanf("%ld%c%ld", &m, &c, &n);
+	scanf("%ld", &m);
+
+	while((c = getchar()) == ' ') ;
+
+	scanf("%ld", &n);
+
 	if(c == '+')
 		s = m + n;
 	else if(c == '-')
