@@ -8,25 +8,28 @@ int main()
 	char s[1024];	
 
 	scanf("%d", &t);
+	getchar();
+
 	while(t--) {
 		int i = 0, j = 0;
 		int k;
-		scanf("%s", s);
+	
+		gets(s);
 		while(1) {
-			if(s[j] == '\0')
-				break;
 			while(s[j] && s[j] != ' ') {
 				++j;
 			}
 			for(k = j - 1; k >= i; --k)
 				printf("%c", s[k]);
-			printf(" ");
-			i = j + 1, j += 1;
-			while(s[j] == ' ')
-				printf(" "), ++i, ++j;
+			while(s[j] && s[j] == ' ') {
+				printf(" ");
+				++j;
+			}
+			if(s[j] == '\0')
+				break;
+			i = j;
 		}
-		for(k = j - 1; k >= i; --k)
-			printf("%c", s[k]);
+		printf("\n");
 	}
 
 	return 0;
