@@ -1,4 +1,35 @@
 P: code pass;  Y: no need code, easy;  N: no code;  X: has code, no pass
+Z: question not available
+
+1105	Z
+1107	Z
+1108	N
+1109	N
+1110	N  
+1111	N  
+1112	N  
+1113	Z  
+1114	N  
+1115	N  
+
+1135	P
+1136	Y
+1137	P
+1138	Y
+1139	Y
+1140	Y
+1141	Y
+1142	Y
+1143	Y
+1144	Y
+1145	Y
+1146	Y
+1147	Y
+1148	Y
+1149	Y
+1150	Y
+1151	Y
+1152	Y
 
 1331	X
 1333	Y
@@ -11,3 +42,7 @@ P: code pass;  Y: no need code, easy;  N: no code;  X: has code, no pass
 1340	Y
 1341	Y
 1350	N
+
+
+
+27670	Y
