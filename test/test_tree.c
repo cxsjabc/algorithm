@@ -5,6 +5,7 @@
 
 int main()
 {
+#if 0
 	PTree tree = NULL;
 	PTreeNode node;
 	
@@ -32,6 +33,15 @@ int main()
 	PN(node->data);
 
 	bst_free(tree);
-	
+#endif
+
+#if 1
+	PTree t;
+	tree_create(&t);
+
+	bst_show(t);
+
+	bst_free(t);
+#endif	
 	return 0;
 }

@@ -1,5 +1,6 @@
 P: code pass;  Y: no need code, easy;  N: no code;  X: has code, no pass
 Z: question not available
+D: is coding
 
 1105	Z
 1107	Z
@@ -56,6 +57,28 @@ Z: question not available
 1789	Y
 1790	Y
 1791	N
+1792	N
+1794	Y
+1795	Y
+1797	N
+1798	N
+1799	N
+1800	N
+1801	Y
+1802	N
+
+
+
+
+1903	Z
+1904	N
+1905	N
+1906	Y
+1907	Y
+
+1909	N
+
+
 
 
 27670	Y
