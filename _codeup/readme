@@ -1,6 +1,36 @@
-P: code pass;  Y: no need code, easy;  N: no code;  X: has code, no pass
-Z: question not available
+P: code pass;  
+Y: no need code, easy;  
+
+N: no code;  
+X: has code, no pass
+
 D: is coding
+
+Z: question not available
+ZP:	question not available, i think it passes
+ZY:	question not available, no need code because i think it is easy
+ZN: question not available, no code
+ZX:	question not available, has code, no pass
+ZD:	question not available, is coding 
+
+
+
+Easy_Cnt	30
+Hard_Cnt	20
+
+2017-04-16 
+Easy:	4
+Hard:	0
+
+
+1000	ZY
+1001	P
+1002	P
+1003	P
+1004	P
+1005	1004	P
+1006	P
+1007	P
 
 1105	Z
 1107	Z

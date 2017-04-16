@@ -1,8 +1,9 @@
 #include <stdio.h> 
+// i don't know why this can't pass?
+
 #include <stdlib.h> 
 #include <math.h> 
 
-// too slow! I don't know why ?
 
 char s[] = {'A', 'B', 'C', 'D', 'F'};
 int	 score[] = {4, 3, 2, 1, 0};
@@ -41,17 +42,25 @@ int	get_score(char c)
 int main()
 {
 	double sum = 0;
-	char ch;
+	int ch;
 	int ch_in_abcde = 1;
 	int cnt = 0;
+	int first = 1;
 
 	while(1) {
 		ch = getchar();
+		if(ch == EOF)
+			break;
 		if(ch == '\n') {
-			if(ch_in_abcde)
-				printf("%.2f\n", sum / cnt);
+			if(!first)
+				printf("\n");
 			else
-				printf("Unknown\n");
+				first = 0;
+
+			if(ch_in_abcde)
+				printf("%.2f", sum / cnt);
+			else
+				printf("Unknown");
 			cnt = 0;
 			ch_in_abcde = 1;
 			sum = 0;
