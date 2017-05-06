@@ -12,105 +12,16 @@ ZY:	question not available, no need code because i think it is easy
 ZN: question not available, no code
 ZX:	question not available, has code, no pass
 ZD:	question not available, is coding 
+NNG: not pass, but i think i am right.
+easy: very easy or i wrote codes before or i wrote similar or duplicate codes before.
 
-
-
+// this is used the writer.
 Easy_Cnt	30
 Hard_Cnt	20
 
-2017-04-16 
-Easy:	4
-Hard:	0
+start point:
+1224
+1690
 
-
-1000	ZY
-1001	P
-1002	P
-1003	P
-1004	P
-1005	1004	P
-1006	P
-1007	P
-
-1026	Z
-
-1105	Z
-1107	Z
-1108	N
-1109	N
-1110	N  
-1111	N  
-1112	N  
-1113	Z  
-1114	N  
-1115	N  
-
-1135	P
-1136	Y
-1137	P
-1138	Y
-1139	Y
-1140	Y
-1141	Y
-1142	Y
-1143	Y
-1144	Y
-1145	Y
-1146	Y
-1147	Y
-1148	Y
-1149	Y
-1150	Y
-1151	Y
-1152	Y
-
-1331	X
-1333	Y
-1334	Y
-1335 	Y
-1336	Y
-1337	Y
-1338	Y
-1339	Y
-1340	Y
-1341	Y
-1350	N
-
-
-1353	Y
-1637	Y
-1690	Y
-1691	Y
-
-
-1786	Y
-1787	Y
-1788	N
-1789	Y
-1790	Y
-1791	N
-1792	N
-1794	Y
-1795	Y
-1797	N
-1798	N
-1799	N
-1800	N
-1801	Y
-1802	N
-
-
-
-
-1903	Z
-1904	N
-1905	N
-1906	Y
-1907	Y
-
-1909	N
-
-
-
-
-27670	Y
+Todo:
+1788

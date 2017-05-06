@@ -2,6 +2,8 @@
 #include <stdlib.h> 
 #include <math.h> 
 
+
+// i don't know why it can't pass the online judge!
 int main()
 {
 	int a, b;
