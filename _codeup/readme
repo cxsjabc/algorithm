@@ -1,26 +1,10 @@
 // the file is owned by xichen! Thanks for my cat!
-Status: passed  187 qustions!
 
-P: code pass;  
-Y: no need code, easy;  
-
-N: no code;  
-X: has code, no pass
-
-D: is coding
-
-Z: question not available
-ZP:	question not available, i think it passes
-ZY:	question not available, no need code because i think it is easy
-ZN: question not available, no code
-ZX:	question not available, has code, no pass
-ZD:	question not available, is coding 
-NNG: not pass, but i think i am right.
-easy: very easy or i wrote codes before or i wrote similar or duplicate codes before.
-
-// this is used the writer.
-Easy_Cnt	30
-Hard_Cnt	20
+<file>.<format>.c
+<format>:
+	NNG: not pass, but i think i am right.
+	easy: very easy or i wrote codes before or i wrote similar or duplicate codes before.
+	not-available: the problem is not ready.
 
 start point:
-1224
+1245
