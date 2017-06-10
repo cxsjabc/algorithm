@@ -17,7 +17,7 @@ typedef DList	DListNode, DListHead;
 PDListHead	dlist_create(PDListHead *plh);
 PDListHead	dlist_create_by_input(PDListHead *plh);
 
-// insert a node which value is v after pln
+// insert a node which value is v after pln, if pln is NULL, insert to the first node
 int			dlist_insert(PDListHead *lh, PDListNode pln, int v);
 // remove a node which after pln, if pln is NULL, remove the first node
 int			dlist_remove(PDListHead *lh, PDListNode pln);
