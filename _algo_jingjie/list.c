@@ -5,31 +5,34 @@
 #include "list.h"
 
 
-PListHead	list_create()
+PListHead	list_create(PListHead *l)
 {
-	PListNode pln = (PListNode)malloc(sizeof(ListNode));
-	if(!pln)
-		return NULL;
-	
-	pln->v = 0xABCDABCD; // just a special value indicates header node
-	pln->next = NULL;	
-
-	return pln;
+	*l = NULL;
+	return NULL;
 }
 
-int		list_insert(PListHead lh, PListNode pln, int v)
+int		list_insert(PListHead *lh, PListNode pln, int v)
 {
 	PListNode node = (PListNode)malloc(sizeof(ListNode));
 
 	if(!node)
 		return -1;
 
-	if(!pln) {	// if pln is NULL, insert after header node.
-		PListNode next = lh->next;
-		node->v = v;
-		node->next = next;
-		lh->next = node;
-		return 0;
+	if(!pln) {	
+		if(!*lh) { // NULL header pointer
+			node->v = v;
+			node->next = NULL;
+			*lh = node;
+			(*lh)->next = NULL;
+			//printf("Set header pointer to:%p, value:%d\n", *lh, (*lh)->v);
+			return 0;
+		} {
+			node->v = v;
+			node->next = *lh;
+			*lh = node;
+			//printf("header pointer is:%p, value:%d, next_value:%d\n", *lh, (*lh)->v, (*lh)->next->v);
+			return 0;
+		}
 	} else {
 		PListNode next = pln->next; 
 		node->v = v;
@@ -40,18 +43,17 @@ int		list_insert(PListHead lh, PListNode pln, int v)
 	
 }
 
-int			list_remove(PListHead lh, PListNode pln)
+int			list_remove(PListHead *plh, PListNode pln)
 {
-	PListNode node = lh->next;
+	PListHead lh = *plh;
 	if(!pln) {	// pln is NULL, remove first node(not header node)
-		if(!node)
-			return -1;
-		else {
-			PListNode next = node->next;
-			free(node);
-			lh->next = next;
-			return 0;
-		}
+		PListNode node;
+		if(lh == NULL)
+			return -2;
+		node = lh->next;
+		free(lh);
+		*plh = node;
+		return 0;
 	} else {
 		PListNode next = pln->next;
 		if(!next)
@@ -68,7 +70,7 @@ int			list_remove(PListHead lh, PListNode pln)
 PListNode	list_get_node(PListHead lh, int index)
 {
 	PListNode node = lh;
-	int i = -1;
+	int i = 0;
 
 	assert(index >= 0);
 
@@ -92,7 +94,7 @@ int			list_get_node_value(PListHead lh, int index)
 
 void		list_show(PListHead lh)
 {
-	PListNode node = lh->next;
+	PListNode node = lh;
 
 	while(node) {
 		printf("%d ", node->v);
@@ -101,14 +103,26 @@ void		list_show(PListHead lh)
 	printf("\n");
 }
 
-void		list_destroy(PListHead lh)
+void		list_destroy(PListHead *plh)
 {
 	PListNode pln;
-	PListNode node = lh;
+	PListNode node = *plh;
 
 	while(node) {
 		pln = node->next;
 		free(node);
 		node = pln;
 	}
+	*plh = NULL;
+}
+
+int			list_size(PListHead lh)
+{
+	int size = 0;
+
+	while(lh) {
+		++size;
+		lh = lh->next;
+	}
+	return size;
 }
