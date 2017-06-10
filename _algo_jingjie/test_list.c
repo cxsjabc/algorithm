@@ -31,6 +31,10 @@ void test_list()
 	list_show(plh);
 
 	list_destroy(&plh);
+
+	list_create_by_input(&plh);
+	list_show(plh);
+	list_destroy(&plh);
 }
 
 int main()

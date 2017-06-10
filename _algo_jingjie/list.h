@@ -12,6 +12,7 @@ typedef List 	*PList, *PListHead, *PListNode;
 typedef List	ListNode, ListHead;
 
 PListHead	list_create(PListHead *plh);
+PListHead	list_create_by_input(PListHead *plh);
 
 // insert a node which value is v after pln
 int			list_insert(PListHead *lh, PListNode pln, int v);

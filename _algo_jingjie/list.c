@@ -11,6 +11,44 @@ PListHead	list_create(PListHead *l)
 	return NULL;
 }
 
+PListHead	list_create_by_input(PListHead *plh)
+{
+	int v;
+	PListNode node = NULL;
+	int ret;
+
+	*plh = NULL;
+
+	while((ret = scanf("%d", &v)) != EOF) {
+		int r;
+		if(ret == 0) {	// flush stdin for unmatched input data
+			char c;
+			while((c = getchar()) != '\n') 
+				;
+			continue;
+		}
+		
+		// insert the data 
+		r = list_insert(plh, node, v);
+		if(r != 0) {
+			printf("insert node:%d error!\n", v);
+			break;
+		}
+
+		// update the next insert node pointer
+		if(node == NULL)
+			node = *plh;
+		else
+			node = node->next;
+	}	
+	
+	// means stdin error, then destory the list and return NULL
+	if(ferror(stdin)) {
+		list_destroy(plh);
+	}
+	return *plh;
+}
+
 int		list_insert(PListHead *lh, PListNode pln, int v)
 {
 	PListNode node = (PListNode)malloc(sizeof(ListNode));
