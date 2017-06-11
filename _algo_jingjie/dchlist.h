@@ -23,6 +23,7 @@ PDCHListNode	dchlist_get_node(PDCHListHead lh, int index);
 int			dchlist_get_node_value(PDCHListHead lh, int index);
 
 void		dchlist_show(PDCHListHead lh);
+void		dchlist_show1(PDCHListHead lh);
 
 void		dchlist_destroy(PDCHListHead lh);
 

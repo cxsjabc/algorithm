@@ -21,6 +21,7 @@ void test_dchlist()
 	}
 
 	dchlist_show(plh);
+	dchlist_show1(plh);
 
 	dchlist_remove(plh, NULL);
 	dchlist_show(plh);
@@ -29,7 +30,7 @@ void test_dchlist()
 	printf("node:%p value:%d\n", node, dchlist_get_node_value(plh, 1));
 
 	dchlist_remove(plh, node);
-	dchlist_show(plh);
+	dchlist_show1(plh);
 
 	dchlist_destroy(plh);
 }

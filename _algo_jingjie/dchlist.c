@@ -114,6 +114,17 @@ void		dchlist_show(PDCHListHead lh)
 	printf("\n");
 }
 
+void		dchlist_show1(PDCHListHead lh)
+{
+	PDCHListNode node = lh->prev;
+
+	while(node != lh) {
+		printf("%d, next:%p,data:%d\n", node->v, node->next, (node->next != lh ? node->next->v : -1));
+		node = node->prev;
+	}	
+	printf("\n");
+}
+
 void		dchlist_destroy(PDCHListHead lh)
 {
 	PDCHListNode pln;
