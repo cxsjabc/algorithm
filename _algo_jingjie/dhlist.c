@@ -12,6 +12,7 @@ PDHListHead	dhlist_create()
 		return NULL;
 	
 	pln->v = 0xABCDABCD; // just a special value indicates header node
+	pln->prev = NULL;	
 	pln->next = NULL;	
 
 	return pln;
@@ -27,13 +28,21 @@ int		dhlist_insert(PDHListHead lh, PDHListNode pln, int v)
 	if(!pln) {	// if pln is NULL, insert after header node.
 		PDHListNode next = lh->next;
 		node->v = v;
+		node->prev = NULL;
 		node->next = next;
+
 		lh->next = node;
+		if(next)
+			next->prev = node;
 		return 0;
 	} else {
 		PDHListNode next = pln->next; 
 		node->v = v;
+		node->prev = pln;
 		node->next = next;
+		
+		next->prev = node;
+
 		pln->next = node;
 		return 0;
 	}
@@ -50,6 +59,8 @@ int			dhlist_remove(PDHListHead lh, PDHListNode pln)
 			PDHListNode next = node->next;
 			free(node);
 			lh->next = next;
+			if(next)
+				next->prev = NULL;
 			return 0;
 		}
 	} else {
@@ -60,6 +71,8 @@ int			dhlist_remove(PDHListHead lh, PDHListNode pln)
 			PDHListNode nn = next->next;
 			free(next);
 			pln->next = nn;
+			if(nn)
+				nn->prev = pln;
 			return 0;
 		}
 	}
@@ -95,7 +108,7 @@ void		dhlist_show(PDHListHead lh)
 	PDHListNode node = lh->next;
 
 	while(node) {
-		printf("%d ", node->v);
+		printf("%d, prev:%p,data:%d\n", node->v, node->prev, (node->prev ? node->prev->v : -1));
 		node = node->next;
 	}	
 	printf("\n");

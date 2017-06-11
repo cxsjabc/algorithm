@@ -5,6 +5,7 @@
 typedef struct _DHList
 {
 	int v;
+	struct _DHList *prev;
 	struct _DHList *next;
 } DHList;
 
