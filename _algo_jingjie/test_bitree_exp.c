@@ -15,10 +15,14 @@ void test_bitree_exp1()
 	char *s = "12+345+**";
 	char *p = s;
 	char buf[512];
+	char post_buf[512];
 	scanf("%s", buf);
-	if(buf[0] != 'a')
-		p = buf;
+	if(buf[0] != 'a') {	// infix test
+		infix_to_postfix(buf, post_buf);
+		p = post_buf;
+	}
 
+	
 	t = bitree_exp_create_by_str(p);
 	assert(t);
 	

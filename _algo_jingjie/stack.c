@@ -83,6 +83,11 @@ int			stack_top(PStack s)
 	return v;
 }
 
+int			stack_empty(PStack s)
+{
+	return s->size == 0;
+}
+
 void		stack_show(PStack s)
 {
 	PStackNode node = s->head;
