@@ -2,11 +2,71 @@
 #include <stdlib.h> 
 #include <string.h> 
 #include <math.h> 
+#include <ctype.h> 
 
 #include <assert.h> 
 
 #include "bitree_exp.h"
 #include "stack.h"
+
+// assume that: operator and operand are single character.
+void			infix_to_postfix(const char *in, char *post)
+{
+	int i = 0;
+	Stack	*sta;
+
+	sta = stack_create();
+	assert(sta);
+
+	while(*in) {
+		char ch = *in;
+		if(isdigit(ch)) {	 // is operand
+			post[i++] = *in;
+		} else if(ch == '(')
+			assert(stack_push(sta, ch) >= 0);
+		else if(ch == ')') {
+			char temp = (char)stack_top(sta);
+			while(temp != '(') {
+				temp = (char)stack_top(sta);
+				stack_pop(sta);
+				post[i++] = temp;
+				temp = (char)stack_top(sta);
+			}
+			stack_pop(sta);
+		} else { // is operator
+			if(stack_empty(sta))
+				stack_push(sta, ch);
+			else {
+				char temp = (char)stack_top(sta);
+				if(temp == '(')
+					stack_push(sta, ch);
+				else if(temp == '+' || temp == '-') {
+					if(ch == '*' || ch == '/')
+						stack_push(sta, ch);
+					else {
+						temp = (char)stack_top(sta);	
+						stack_pop(sta);
+						post[i++] = temp;
+						continue;
+					}
+				} else if(temp == '*' || temp == '/') {
+					stack_pop(sta);
+					post[i++] = temp;
+					continue;
+				}
+			}
+		}
+		++in;
+	}
+	while(!stack_empty(sta)) {
+		char temp = stack_top(sta);
+		post[i++] = temp;
+		stack_pop(sta);
+	}
+	post[i] = '\0';
+	stack_destroy(sta);
+	printf("post expression:%s\n", post);
+}
 
 BiTreeExp *		bitree_exp_create()
 {

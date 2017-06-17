@@ -32,6 +32,7 @@ int			stack_push(PStack s, long long v);
 long long	stack_pop(PStack s);
 int			stack_top(PStack s);
 
+int			stack_empty(PStack s);
 void		stack_show(PStack s);
 
 void		stack_destroy(PStack s);

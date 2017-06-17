@@ -19,6 +19,9 @@ typedef struct _BiTreeExp
 	BiTreeExpNode		*root;
 } BiTreeExp;
 
+// assume that: operator and operand are single character.
+void			infix_to_postfix(const char *in, char *post);
+
 BiTreeExp *		bitree_exp_create();
 BiTreeExp *		bitree_exp_create_by_str(const char *exp_str);
 void			bitree_exp_destroy(BiTreeExp *t);

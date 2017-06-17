@@ -1,3 +1,6 @@
+/*
+* Copyright by xichen(Xi.chen)  511272827@qq.com
+*/
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h> 
