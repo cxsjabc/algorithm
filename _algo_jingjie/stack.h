@@ -3,7 +3,17 @@
 
 typedef struct _StackNode
 {
-	int v;
+	union {
+		int 	i;
+		void	*p;
+		char	c;
+		short	s;
+		long	l;
+		long long	v;
+		float	f;
+		double	d;
+		long double ld;
+	};
 	struct _StackNode *next;
 } StackNode;
 
@@ -18,8 +28,8 @@ typedef Stack		*PStack;
 
 PStack		stack_create();
 
-int			stack_push(PStack s, int v);
-int			stack_pop(PStack s);
+int			stack_push(PStack s, long long v);
+long long	stack_pop(PStack s);
 int			stack_top(PStack s);
 
 void		stack_show(PStack s);

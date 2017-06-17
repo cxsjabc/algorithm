@@ -19,7 +19,7 @@ PStack	stack_create()
 		free(s);
 		return NULL;
 	}
-	node->v = 0x12345678;
+	node->v = (long long)0x12345678;
 	node->next = NULL;
 
 	s->head = node;
@@ -28,7 +28,7 @@ PStack	stack_create()
 	return s;
 }
 
-int		stack_push(PStack s, int v)
+int		stack_push(PStack s, long long v)
 {
 	PStackNode node;
 	PStackNode head;
@@ -49,11 +49,11 @@ int		stack_push(PStack s, int v)
 	return 0;
 }
 
-int			stack_pop(PStack s)
+long long stack_pop(PStack s)
 {
 	PStackNode head;
 	PStackNode n, nn;
-	int v;
+	long long v;
 
 	if(s->size < 1)
 		return -1;
@@ -68,12 +68,12 @@ int			stack_pop(PStack s)
 	head->next = nn;
 	--(s->size);
 
-	return 0;
+	return v;
 }
 
 int			stack_top(PStack s)
 {
-	int v;
+	long long v;
 
 	if(s->size < 1)
 		return -1;
@@ -89,7 +89,7 @@ void		stack_show(PStack s)
 	node = node->next;
 
 	while(node) {
-		printf("%d ", node->v);
+		printf("%lld ", node->v);
 		node = node->next;
 	}	
 	printf("\n");
