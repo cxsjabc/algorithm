@@ -26,6 +26,12 @@ int				bitree_remove_right(BiTree *t, BiTreeNode *n);
 #define			bitree_is_leaf(node)	(((node)->left == NULL) && ((node)->right == NULL))
 
 void			bitree_show(BiTree *t);
+
 #define			bitree_prefix_show		bitree_show
+#define			bitree_preorder		bitree_prefix_show
+void			bitree_inorder(BiTree *t);
+void			bitree_postorder(BiTree *t);	
+
+int				bitree_cal_size(BiTree *t);
 
 #endif

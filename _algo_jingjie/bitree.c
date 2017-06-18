@@ -135,6 +135,11 @@ int				bitree_remove_right(BiTree *t, BiTreeNode *n)
 
 }
 
+void			bitree_visit_node(BiTreeNode *n)
+{
+	printf("%d ", n->v);
+}
+
 void			bitree_show_branch(BiTreeNode *n)
 {
 	if(!n)
@@ -155,3 +160,51 @@ void			bitree_show(BiTree *tree)
 	printf("\n");
 }
 
+void			bitree_inorder_internal(BiTreeNode *n)
+{
+	if(!n)
+		return;
+	bitree_inorder_internal(n->left);	
+	bitree_visit_node(n);
+	bitree_inorder_internal(n->right);	
+}
+
+void			bitree_inorder(BiTree *t)
+{
+	printf("inorder:");
+	if(t) {
+		bitree_inorder_internal(t->root);
+	}	
+	printf("\n");
+}
+
+void			bitree_postorder_internal(BiTreeNode *n)
+{
+	if(!n)
+		return;
+	bitree_postorder_internal(n->left);	
+	bitree_postorder_internal(n->right);	
+	bitree_visit_node(n);
+}
+
+void			bitree_postorder(BiTree *t)
+{
+	printf("postorder:");
+	if(t)
+		bitree_postorder_internal(t->root);
+	printf("\n");
+}
+
+int			bitree_cal_size_internal(BiTreeNode *n) 
+{
+	if(!n)
+		return 0;
+	return 1 + bitree_cal_size_internal(n->left) + bitree_cal_size_internal(n->right);
+}
+
+int			bitree_cal_size(BiTree *t)
+{
+	int size= bitree_cal_size_internal(t->root);
+	t->size = size;	
+	return size;
+}
