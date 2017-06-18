@@ -8,6 +8,26 @@
 
 #define LOG_HERE	printf("[%s@%d]\n", __func__, __LINE__);
 
+void test_bitree1()
+{
+	BiTree *t;
+	int ret;	
+	int i = 1;
+	BiTreeNode *n;
+
+	t = bitree_create();
+	assert(t);
+	
+	for(; i <= 16; ++i) {
+		n = bitree_insert(t, i);
+		assert(n);
+	}
+		
+	bitree_show(t);
+
+	bitree_destroy(t);
+}
+
 void test_bitree()
 {
 	BiTree *t;
@@ -48,6 +68,9 @@ void test_bitree()
 
 int main()
 {
-	test_bitree();
+	//test_bitree();
+
+	test_bitree1();
+
 	return 0;
 }

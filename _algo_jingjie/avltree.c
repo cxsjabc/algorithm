@@ -159,7 +159,7 @@ AvlTreeNode *				avltree_insert_internal(AvlTreeNode **t, int v)
 		n->v = v;
 		n->h = 1;
 		n->left = n->right = NULL;
-		*t = n;
+		*t = n;  // need it?
 	} else {
 		if(v == n->v)
 			return n;

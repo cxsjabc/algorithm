@@ -135,16 +135,81 @@ int				bitree_remove_right(BiTree *t, BiTreeNode *n)
 
 }
 
+BiTreeNode *	bitree_insert_internal(BiTreeNode **pn, int v)
+{
+	BiTreeNode * n = *pn;
+	//printf("debug insert: n:%p,v:%d\n", n, n ? n->v : -1);
+	if(n == NULL) {
+		n = (BiTreeNode *)malloc(sizeof(BiTreeNode));
+		if(!n)
+			return NULL;
+		n->v = v;
+		n->left = n->right = NULL;
+		*pn = n;
+	} else {
+		if(v == n->v)
+			return n;
+		else if(v > n->v) {
+			n->right = bitree_insert_internal(&(n->right), v);
+		} else {
+			n->left = bitree_insert_internal(&(n->left), v);
+		}
+	}
+
+	return n;	
+}
+BiTreeNode *	bitree_insert(BiTree *t, int v)
+{
+	return bitree_insert_internal(&(t->root), v);	
+}
+
+BiTreeNode *	bitree_remove_internal(BiTreeNode ** pn, int v)
+{
+	BiTreeNode *n = *pn;
+
+	if(n == NULL)
+		return NULL;	
+
+	if(v < n->v)
+		n->left = bitree_remove_internal(&(n->left), v);
+	else if(v > n->v)
+		n->right = bitree_remove_internal(&(n->right), v);
+	else {
+		if(n->left != NULL) {
+			// find max in left sub tree
+			BiTreeNode *max = n->left;
+			for(; n->right != NULL; n = n->right) ;
+			n->v = max->v;
+			n->left = bitree_remove_internal(&(n->left), max->v);
+		} else if(n->right != NULL) {
+			// find min in right sub tree
+			BiTreeNode *min = n->right;
+			for(; n->left != NULL; n = n->left) ;
+			n->v = min->v;
+			n->right = bitree_remove_internal(&(n->right), min->v);
+		} else {
+			free(n);
+			return NULL;
+		}
+	}
+	return n;
+}
+
+BiTreeNode *	bitree_remove(BiTree *t, int v)
+{
+	return bitree_remove_internal(&(t->root), v);
+}
+
 void			bitree_visit_node(BiTreeNode *n)
 {
-	printf("%d ", n->v);
+	printf("%d(l:%d,r:%d) ", n->v, n->left ? n->left->v : -1, n->right ? n->right->v : -1);
 }
 
 void			bitree_show_branch(BiTreeNode *n)
 {
 	if(!n)
 		return;
-	printf("%d ", n->v);
+	bitree_visit_node(n);
 	bitree_show_branch(n->left);	
 	bitree_show_branch(n->right);	
 }
@@ -154,7 +219,7 @@ void			bitree_show(BiTree *tree)
 	BiTreeNode *n;
 	if(!tree)
 		return;
-
+	printf("preorder:");
 	n = tree->root;
 	bitree_show_branch(n);
 	printf("\n");

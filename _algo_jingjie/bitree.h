@@ -23,6 +23,9 @@ int				bitree_ins_right(BiTree *t, BiTreeNode *n, int v);
 int				bitree_remove_left(BiTree *t, BiTreeNode *n);
 int				bitree_remove_right(BiTree *t, BiTreeNode *n);
 
+BiTreeNode *	bitree_insert(BiTree *t, int v);		
+BiTreeNode *	bitree_remove(BiTree *t, int v);		
+
 #define			bitree_is_leaf(node)	(((node)->left == NULL) && ((node)->right == NULL))
 
 void			bitree_show(BiTree *t);
