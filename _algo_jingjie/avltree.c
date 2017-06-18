@@ -201,7 +201,52 @@ AvlTreeNode *				avltree_insert(AvlTree *t, int v)
 
 AvlTreeNode *				avltree_remove_internal(AvlTreeNode **t, int v)
 {
-	return NULL;
+	AvlTreeNode *n = *t;
+	int		balance;
+
+	if(n == NULL)
+		return NULL;
+
+	if(v > n->v)
+		n->right = avltree_remove_internal(&(n->right), v);
+	else if(v < n->v)
+		n->left = avltree_remove_internal(&(n->left), v);
+	else {
+		if(n->left != NULL) {
+			AvlTreeNode *max = n->left;
+			// find max in left sub tree
+			for(; max->right != NULL; max = max->right) ;
+			n->v = max->v;
+			n->left = avltree_remove_internal(&(n->left), max->v);
+		} else if(n->right != NULL) {
+			AvlTreeNode *min = n->right;
+			// find min in right sub tree
+			for(; min->left != NULL; min = min->left) ;
+			n->v = min->v;
+			n->right = avltree_remove_internal(&(n->right), min->v);
+		} else {
+			free(n);
+			return NULL;
+		}
+	}
+	
+	balance = avltree_get_node_height(n->left) - avltree_get_node_height(n->right);
+	if(balance == 2) {
+		if(avltree_get_node_height(n->left->right) - avltree_get_node_height(n->left->left) == 1)
+			n = leftRightRotate(n);
+		else
+			n = singleRightRotate(n);
+	} else if(balance == -2) {
+		if(avltree_get_node_height(n->right->left) - avltree_get_node_height(n->right->right) == 1)
+			n = rightLeftRotate(n);
+		else
+			n = singleLeftRotate(n);
+	} else {
+		// do nothing
+	}
+
+	n->h = max(avltree_get_node_height(n->left), avltree_get_node_height(n->right)) + 1;
+	return n;
 }
 
 AvlTreeNode *				avltree_remove(AvlTree *t, int v)
@@ -248,7 +293,7 @@ AvlTreeNode	*		rightLeftRotate(AvlTreeNode *n)	// RL
 
 void			avltree_visit_node(AvlTreeNode *n)
 {
-	printf("%d(h:%d) ", n->v, n->h);
+	printf("%d(h:%d,l:%d,r:%d) ", n->v, n->h, n->left ? n->left->v : -1, n->right ? n->right->v : -1);
 }
 
 void			avltree_show_branch(AvlTreeNode *n)
@@ -266,6 +311,7 @@ void			avltree_show(AvlTree *tree)
 	if(!tree)
 		return;
 
+	printf("preorder:");
 	n = tree->root;
 	avltree_show_branch(n);
 	printf("\n");

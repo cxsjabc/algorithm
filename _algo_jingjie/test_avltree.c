@@ -28,7 +28,33 @@ void test_avltree1()
 	avltree_insert(t, 4);
 	avltree_insert(t, 8);
 
+	avltree_preorder(t);
 	avltree_inorder(t);
+	avltree_postorder(t);
+
+	avltree_insert(t, 2);
+	avltree_preorder(t);
+	
+	avltree_insert(t, 30);
+	avltree_preorder(t);
+
+	avltree_destroy(t);
+}
+
+void test_avltree2()
+{
+	AvlTree *t;
+	int ret;	
+	int i = 1;
+
+	t = avltree_create();
+
+	for(; i <= 16; ++i)
+		avltree_insert(t, i);
+
+	avltree_preorder(t);
+	avltree_inorder(t);
+	avltree_postorder(t);
 
 	avltree_destroy(t);
 }
@@ -77,6 +103,8 @@ void test_avltree()
 int main()
 {
 	//test_avltree();
-	test_avltree1();
+	//test_avltree1();
+
+	test_avltree2();
 	return 0;
 }
