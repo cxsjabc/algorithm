@@ -102,9 +102,9 @@ void test_avltree()
 
 int main()
 {
-	//test_avltree();
+	test_avltree();
 	//test_avltree1();
 
-	test_avltree2();
+	//test_avltree2();
 	return 0;
 }
