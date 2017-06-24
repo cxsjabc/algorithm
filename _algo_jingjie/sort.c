@@ -54,3 +54,37 @@ int	insert_sort_int(void *data, int data_cnt)
 {
 	return insert_sort(data, data_cnt, sizeof(int), compare_int);
 }
+
+// dir: 0: means ascend; 1: means: descend.
+int	insert_sort_int1(int a[], int size, int dir, unsigned long long *record_exec_cnt)
+{
+	int i, j;
+
+	for(i = 1; i < size; ++i) {
+		for(j = 0; j < i; ++j) {
+			if(dir == 0 && a[i] <= a[j]) {
+				int temp = a[i];
+				int k = i - 1;
+				while(k >= j) {
+					a[k + 1] = a[k];
+					--k;
+					++(*record_exec_cnt);
+				}
+				a[j] = temp;
+				break;
+			} else if(dir == 1 && a[i] > a[j]) {
+				int temp = a[i];
+				int k = i - 1;
+				while(k >= j) {
+					a[k + 1] = a[k];
+					--k;
+					++(*record_exec_cnt);
+				}
+				a[j] = temp;
+				break;
+			}
+		}		
+	}
+	return 0;
+}
+
