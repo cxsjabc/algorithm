@@ -7,6 +7,8 @@ Environment:
 		Target: x86_64-apple-darwin16.4.0
 		Thread model: posix
 
+First way:  
+	using smr.sh:
 
 How to execute the test program:
 	1 Test list without header node:
@@ -14,4 +16,12 @@ How to execute the test program:
 
 	2 Test list with header node:
 		./smr.sh test_hlist hlist.c
+
+
+Second way:
+	Using mr.sh: 
+	this will include common header files and compile common src files which repo is: 
+		https://github.com/cxsjabc/common.git
+	eg:
+		./mr.sh test_sort sort.c
 
