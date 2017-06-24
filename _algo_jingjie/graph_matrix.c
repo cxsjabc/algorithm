@@ -66,6 +66,18 @@ void	graph_matrix_input_vertex(PGraphMatrix g)
 	printf("exit input_vertex\n");
 }
 
+
+int		graph_matrix_set_edge_connected(PGraphMatrix g, int v1, int v2, int value)
+{
+	int num_v = g->num_v;
+	if(v1 >= num_v || v2 >= num_v)
+		return -1;
+
+	g->m[v1][v2] = value;
+	g->m[v2][v1] = value;
+	return 0;
+}
+
 void	graph_matrix_destroy(PGraphMatrix g)
 {
 	int i;
@@ -86,7 +98,7 @@ void	graph_matrix_show(PGraphMatrix g)
 {
 	int i = 0, j;
 	
-	printf("enter showi\n");
+	//printf("enter show\n");
 	j = 0;
 	while(i < g->num_v) {
 		j = 0;
