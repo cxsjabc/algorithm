@@ -30,13 +30,16 @@ void	test_graph_matrix()
 	LH
 
 	graph_matrix_input_vertex(g);
-	printf("after intput vertex\n");  // **very strange: if marked this line, will crash **
+	//printf("after intput vertex\n");  // **very strange: if marked this line, will crash **
 	//printf("a");
 	LH
 
 	graph_matrix_show(g);
-	//printf("after show\n");
 	LH
+
+	//graph_matrix_set_edge_connected(g, 1, 2, 0);
+	//graph_matrix_show(g);
+
 	graph_matrix_destroy(g);		
 }
 
