@@ -1,6 +1,9 @@
 #ifndef SET_H
 #define SET_H
 
+// this is a simple set, actually, not a really set
+// It's implemented by linked list.
+
 typedef struct _SetNode
 {
 	int v;
