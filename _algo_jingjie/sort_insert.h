@@ -1,5 +1,5 @@
-#ifndef SORT_H
-#define	SORT_H
+#ifndef SORT_INSERT_H
+#define	SORT_INSERT_H
 
 typedef int (*compare)(const void *d1, const void *d2);
 
