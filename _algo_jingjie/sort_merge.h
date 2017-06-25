@@ -4,5 +4,8 @@
 
 int		merge_sort_int(int a[], int size);
 
+// not ready now!
+int		merge_sort_int_norecursive(int a[], int size);
+
 
 #endif
