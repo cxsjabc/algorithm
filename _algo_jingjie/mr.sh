@@ -6,6 +6,9 @@ then
 	exit -1
 fi
 
+DEFINES=
+DEFINES+=-D_USE_COMMON_SRC
+
 REL_PATH=../../
 #COMMON_C="../../common/common.c ../../common/gen.c ../../common/arr.c"
 source common.sh
@@ -14,4 +17,4 @@ source common.sh
 DEST=$1
 shift
 
-gcc $@ -Wall -g -o $DEST.elf $DEST.c ${COMMON_C} && ./$DEST.elf
+gcc $@ ${DEFINES} -Wall -g -o $DEST.elf $DEST.c ${COMMON_C} && ./$DEST.elf

@@ -7,10 +7,8 @@
 #include <math.h> 
 #include <assert.h> 
 
-
-#define	LOG_LEVEL		LOG_LEVEL_VERBOSE
-
 #ifdef _USE_COMMON_SRC
+#define	LOG_LEVEL		LOG_LEVEL_VERBOSE
 #include "common_local.h"
 #endif
 

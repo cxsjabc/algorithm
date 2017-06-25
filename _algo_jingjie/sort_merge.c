@@ -7,7 +7,10 @@
 #include <math.h> 
 #include <assert.h> 
 
+#ifdef _USE_COMMON_SRC
 #include "common_local.h"
+#endif
+
 #include "sort_merge.h"
 
 int		merge_sort_int_internal(int a[], int size, int i, int j)
