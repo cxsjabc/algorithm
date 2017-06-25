@@ -7,6 +7,13 @@
 #include <math.h> 
 #include <assert.h> 
 
+
+#define	LOG_LEVEL		LOG_LEVEL_VERBOSE
+
+#ifdef _USE_COMMON_SRC
+#include "common_local.h"
+#endif
+
 int main()
 {
 	printf("%d\n", 0);
