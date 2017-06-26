@@ -90,26 +90,31 @@ int		merge_sort_int_internal(int a[], int size, int i, int j)
 int		merge_sort_int_norecursive_internal(int a[], int size, int i, int j)
 {
 	int step = 1;
-	int k;
 	int *p;
 
 	p = (int *)malloc(sizeof(int) * (j - i + 1));
 	if(!p)
 		return -1;
-	for(; step <= size / 2; step *= 2) {
-		for(k = i; k <= j; k += 2 * step) {
-			int first_cnt = (k + step - 1 <= j) ? step : (j - k);
-			if(first_cnt < 0)
-				first_cnt = 0;
-			int second_cnt = (k + 2 * step - 1 <= j) ? step : (j - (k + step - 1));
-			if(second_cnt < 0)
-				second_cnt = 0;
-				
-			merge_arr(a, k, first_cnt, a, k + step, second_cnt, p, 0);
-			memcpy(&a[i], p, sizeof(int) * (j - i + 1));
-		}		
-	}
+	while(step < size) {
+		int m = 0;
+		while(m <= size - 2 * step) {
+			merge_arr(a, m, step, a, m + step, step, p, 0);			
+			memcpy(&a[m], p, sizeof(int) * (step * 2));
+			m += 2 * step;
+			show_arr(a, m);
+		}
+		if(m < size) {
+			merge_arr(a, 0, m, a, m, size - m, p, 0);	
+			memcpy(&a[0], p, sizeof(int) * size);
+		} else {
+			// do nothing
+		}
+		show_arr(a, size);
 
+		step *= 2;
+	}	
+
+	free(p);
 	return 0;
 }
 
