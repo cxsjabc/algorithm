@@ -10,7 +10,7 @@
 #include "sort_merge.h"
 #include "common_local.h"
 
-#define ARRAY_A1_SIZE 	13
+#define ARRAY_A1_SIZE 	1003
 
 void test_sort_merge()
 {
@@ -27,20 +27,20 @@ void test_sort_merge()
 	pa = a1;
 	size = sizeof(a1) / sizeof(a1[0]);
 
-	gen_basic_arr(pa, size, 1, 200);
-#if 0
+	gen_basic_arr(pa, size, 1, 2000);
+#if 0 
 	for(i = 0; i < ARRAY_A1_SIZE; ++i) {
-		pa[i] = i + 1;
+		pa[i] = 100 - i;
 	}	
 #endif
-	show_arr(pa, size);
+	//show_arr(pa, size);
 
 	TS(loop_cnt)
 		//ret = merge_sort_int(pa, size);
 		ret = merge_sort_int_norecursive(pa, size);
 	TE
 
-	show_arr(pa, size);
+	//show_arr(pa, size);
 	PN(is_arr_sorted(pa, size));
 	
 }

@@ -8,6 +8,7 @@
 #include <assert.h> 
 
 #ifdef _USE_COMMON_SRC
+#define _LOG_LEVEL	LOG_LEVEL_INFO
 #include "common_local.h"
 #endif
 
@@ -97,19 +98,21 @@ int		merge_sort_int_norecursive_internal(int a[], int size, int i, int j)
 		return -1;
 	while(step < size) {
 		int m = 0;
+		LOG_D("loop: +\n");
 		while(m <= size - 2 * step) {
-			merge_arr(a, m, step, a, m + step, step, p, 0);			
-			memcpy(&a[m], p, sizeof(int) * (step * 2));
+			merge_arr(a, m, step, a, m + step, step, p, m);			
+			LOG_D("s1:%d,s1s:%d,s2:%d,s2s:%d\n", m, step, m + step, step);
 			m += 2 * step;
-			show_arr(a, m);
 		}
-		if(m < size) {
-			merge_arr(a, 0, m, a, m, size - m, p, 0);	
-			memcpy(&a[0], p, sizeof(int) * size);
+		LOG_D("step+:%d\n", step);
+		LOG_D("m:%d, size:%d\n", m, size);
+		if(m + step >= size) {
+			memcpy(&p[m], &a[m], sizeof(int) * (size - m));
 		} else {
-			// do nothing
+			merge_arr(a, m, step, a, m + step, size - (m + step), p, m);	
 		}
-		show_arr(a, size);
+		memcpy(a, p, sizeof(int) * size);
+		LOG_D("loop: -\n");
 
 		step *= 2;
 	}	
