@@ -20,27 +20,18 @@ int		is_ugly(int n)
 	if(n == 1)
 		return 1;
 
-	while(n != 1) {
-		if(n % 2 == 0)
-			n /= 2;
-		else
-			break;
-	}
+	while(n % 2 == 0)
+		n /= 2;
 	log_v("after / 2:%d\n", n);
-	while(n != 1) {
-		if(n % 3 == 0)
-			n /= 3;
-		else
-			break;
-	}
+
+	while(n % 3 == 0)
+		n /= 3;
 	log_v("after / 3:%d\n", n);
-	while(n != 1) {
-		if(n % 5 == 0)
-			n /= 5;
-		else
-			break;
-	}
+
+	while(n % 5 == 0)
+		n /= 5;
 	log_v("after / 5:%d\n", n);
+
 	log_v("is_ugly:%d, ret:%d\n", n1, n == 1);	
 	return n == 1;
 }
