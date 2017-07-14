@@ -6,9 +6,12 @@ then
 	exit -1
 fi
 
-gcc -o $1.c.simple.elf $1.c
+DEST=$1
+shift
+
+gcc -o $DEST.c.simple.elf $DEST.c $@
 
 if [ $? -eq 0 ]
 then
-./$1.c.simple.elf
+./$DEST.c.simple.elf
 fi
