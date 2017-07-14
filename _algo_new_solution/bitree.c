@@ -221,9 +221,9 @@ BiTreeNode *	bitree_find_internal1(BiTreeNode *n, int v)
 {
 	while(n && n->v != v) {
 		if(n->v < v)
-			n = n->left;
-		else
 			n = n->right;
+		else
+			n = n->left;
 	}
 	return n;
 }
@@ -236,6 +236,42 @@ BiTreeNode *	bitree_find(BiTree *t, int v)
 BiTreeNode *	bitree_find1(BiTree *t, int v)
 {
 	return bitree_find_internal1(t->root, v);
+}
+
+BiTreeNode *	bitree_find_min(BiTree *t)
+{
+	BiTreeNode	*n;
+
+	if(!t)
+		return NULL;
+
+	n = t->root;
+	while(n) {
+		BiTreeNode *l = n->left;
+		if(!l)
+			break;
+		if(l)
+			n = l;
+	}
+	return n;
+}
+
+BiTreeNode *	bitree_find_max(BiTree *t)
+{
+	BiTreeNode	*n;
+
+	if(!t)
+		return NULL;
+
+	n = t->root;
+	while(n) {
+		BiTreeNode *r = n->right;
+		if(!r)
+			break;
+		if(r)
+			n = r;
+	}
+	return n;
 }
 
 void			bitree_visit_node(BiTreeNode *n)

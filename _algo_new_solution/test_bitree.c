@@ -26,6 +26,11 @@ void test_bitree1()
 	printf("find 3: %p\n", bitree_find1(t, 3));	
 	printf("find 20: %p\n", bitree_find1(t, 20));	
 
+	n = bitree_find_min(t);
+	printf("min:%p %d\n", n, n ? n->v : -1);
+	n = bitree_find_max(t);
+	printf("max:%p %d\n", n, n ? n->v : -1);
+
 	bitree_destroy(t);
 }
 
@@ -72,7 +77,7 @@ int main()
 {
 	test_bitree();
 
-	//test_bitree1();
+	test_bitree1();
 
 	return 0;
 }
