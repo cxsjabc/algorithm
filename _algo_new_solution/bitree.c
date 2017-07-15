@@ -274,6 +274,55 @@ BiTreeNode *	bitree_find_max(BiTree *t)
 	return n;
 }
 
+// not ready now
+int			bitree_delete(BiTree *t, BiTreeNode *n)
+{
+	int v;
+	BiTreeNode	*pa, *cur;
+	int is_left;
+
+	if(!t)
+		return -1;
+	if(!n)
+		return -2;
+	
+	pa = cur = t->root;
+	v = n->v;		
+	while(cur && cur->v != v) {
+		if(cur->v < v)
+			pa = cur, cur = cur->right, is_left = 0;
+		else
+			pa = cur, cur = cur->left, is_left = 1;
+	}
+	if(!cur)
+		return -3;
+	
+	if(cur->left == NULL && cur->right == NULL) {
+		free(cur);
+		if(is_left)
+			pa->left = NULL;
+		else
+			pa->right = NULL;
+		return 0;	
+	} else if(cur->left != NULL && cur->right == NULL) {
+		if(is_left)
+			pa->left = cur->left;
+		else
+			pa->right = cur->left;
+		free(cur);
+	} else if(cur->right != NULL && cur->left == NULL) {
+		if(is_left)
+			pa->left = cur->right;
+		else
+			pa->right = cur->right;
+		free(cur);
+	} else {
+		// find min on right tree
+	}
+	
+	return 0;
+}
+
 void			bitree_visit_node(BiTreeNode *n)
 {
 	printf("%d(l:%d,r:%d) ", n->v, n->left ? n->left->v : -1, n->right ? n->right->v : -1);

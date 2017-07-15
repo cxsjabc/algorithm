@@ -32,6 +32,8 @@ BiTreeNode *	bitree_find1(BiTree *t, int v);
 BiTreeNode *	bitree_find_min(BiTree *t);
 BiTreeNode *	bitree_find_max(BiTree *t);
 
+int				bitree_delete(BiTree *t, BiTreeNode *n);
+
 #define			bitree_is_leaf(node)	(((node)->left == NULL) && ((node)->right == NULL))
 
 void			bitree_show(BiTree *t);
