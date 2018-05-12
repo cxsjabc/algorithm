@@ -6,4 +6,4 @@ then
 	exit -1
 fi
 
-gcc -I.. -Wall -g -o $1.elf $1 && ./$1.elf
+gcc -I../.. -Wall -g -o $1.elf $1 && ./$1.elf
