@@ -2,6 +2,12 @@
 #include <stdlib.h> 
 #include <string.h> 
 #include <math.h> 
+#include <iostream>
+#include <queue>
+#include <list>
+#include <vector>
+
+using namespace std;
 
 #define INPUT(n)		scanf("%d", &(n))
 #define INPUT2(n1, n2)	scanf("%d%d", &(n1), &(n2))
@@ -9,6 +15,7 @@
 
 int main()
 {
-	printf("%d\n", 0);
+	cout << "Hello, my cat!" << endl;
+
 	return 0;
 }
