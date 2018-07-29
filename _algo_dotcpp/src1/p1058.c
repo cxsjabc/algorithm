@@ -1,7 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h> 
-#include <ctype.h> 
 #include <math.h> 
 
 #define INPUT(n)		scanf("%d", &(n))
@@ -10,6 +9,16 @@
 
 int main()
 {
-	printf("%d\n", 0);
+	int n;
+	long long sum = 0;
+
+	INPUT(n);
+	while(n--) {
+		int temp;
+		INPUT(temp);
+		if(temp % 2 == 0)
+			sum += temp;
+	}
+	printf("%lld\n", sum);
 	return 0;
 }
