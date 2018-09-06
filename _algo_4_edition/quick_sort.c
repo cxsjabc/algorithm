@@ -1,3 +1,4 @@
+/* bug */
 #include "common_local.h"
 
 void merge_sorted_arr(int arr[], int size, int arr1_s, int arr1_e, int arr2_s, int arr2_e)

@@ -1,3 +1,4 @@
+/* bug */
 #include "common_local.h"
 
 #undef swap
