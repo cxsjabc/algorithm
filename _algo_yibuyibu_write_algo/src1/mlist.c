@@ -69,6 +69,24 @@ void	mlist_show(mlist_node *l)
 		printf("\n");
 }
 
+mlist_node *mlist_reverse(mlist_node *l)
+{
+	mlist_node *n, *p;
+	if(!l)
+		return NULL;
+
+	n = l->next;
+	l->next = NULL;
+
+	while(n) {
+		p = n;
+		n = n->next;
+		p->next = l;
+		l = p;
+	}
+	return p;
+}
+
 int main()
 {
 	mlist_node *l, *l1;
@@ -79,6 +97,8 @@ int main()
 	mlist_append(&l, 1);
 	mlist_append(&l, 2);
 
+	mlist_show(l);
+	l = mlist_reverse(l);
 	mlist_show(l);
 	mlist_delete(&l, 1);
 	mlist_show(l);
