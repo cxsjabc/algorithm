@@ -77,6 +77,35 @@ int	bin_sort_tree_insert(pbin_sort_tree *pt, int v)
 	}
 }
 
+int	bin_sort_tree_delete(pbin_sort_tree *pt, int v)
+{
+	pbin_sort_node node;
+
+	if(pt == NULL || *pt == NULL)
+		return -1;
+	node = bin_sort_tree_find(*pt, v);
+	if(!node)
+		return -2;
+
+	if(*pt == node) {
+		if(node->left == NULL && node->right == NULL) {
+			*pt = NULL;
+			free(node);
+			return 0;
+		} else if(node->left != NULL && node->right == NULL) {
+			*pt = node->left;
+			free(node);
+			return 0;
+		} else if(node->left == NULL && node->right != NULL) {
+			*pt = node->right;
+			free(node);
+			return 0;
+		} else {
+			
+		}
+	}
+}
+
 int main()
 {
 	pbin_sort_tree tree;
