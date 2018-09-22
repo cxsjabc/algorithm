@@ -127,6 +127,21 @@ pbin_sort_node find_right_child_parent(pbin_sort_tree node, pbin_sort_node right
 	return NULL;
 }
 
+pbin_sort_node find_child_parent(pbin_sort_tree node, pbin_sort_node child)
+{
+	pbin_sort_node temp;
+
+	if(node == NULL)
+		return NULL;
+	if(node && (node->left == child || node->right == child))
+		return node;
+	if((temp = find_child_parent(node->left, child)) != NULL)
+		return temp;
+	if((temp = find_child_parent(node->right, child)) != NULL)
+		return temp;
+	return NULL;
+}
+
 int	bin_sort_tree_delete(pbin_sort_tree *pt, int v)
 {
 	pbin_sort_node node;
@@ -167,6 +182,49 @@ int	bin_sort_tree_delete(pbin_sort_tree *pt, int v)
 				return 0;
 			}
 		}
+	} else {
+		if(node->left == NULL && node->right == NULL) {
+			pbin_sort_node parent = find_child_parent(*pt, node);
+			if(parent->left == node)
+				parent->left = NULL;
+			else
+				parent->right = NULL;
+			free(node);
+			return 0;
+		} else if(node->left != NULL && node->right == NULL) {
+			pbin_sort_node parent = find_child_parent(*pt, node);
+			if(parent->left == node)
+				parent->left = node->left;
+			else
+				parent->right = node->left;
+			free(node);
+			return 0;
+		} else if(node->left == NULL && node->right != NULL) {
+			pbin_sort_node parent = find_child_parent(*pt, node);
+			if(parent->left == node)
+				parent->left = node->right;
+			else
+				parent->right = node->right;
+			free(node);
+			return 0;
+		} else {
+			pbin_sort_node parent = find_child_parent(*pt, node);
+			pbin_sort_node left_max = find_max_node(node->left);
+			if(left_max == node->left) {
+				if(parent->left == node)
+					parent->left = left_max;
+				else
+					parent->right = left_max;
+				left_max->right = node->right;
+			} else {
+				node->v = left_max->v;
+				parent = find_child_parent(*pt, left_max);
+				parent->right = left_max->left;
+				node = left_max;	
+			}
+			free(node);
+			return 0;
+		}
 	}
 	return -3;
 }
@@ -191,10 +249,12 @@ int main()
 	PD(bin_sort_tree_insert(&tree, 7));
 	PD(bin_sort_tree_insert(&tree, 5));
 
-	bin_sort_tree_show(tree);
-	PD(bin_sort_tree_delete(&tree, 6));
+	//bin_sort_tree_show(tree);
+	//PD(bin_sort_tree_delete(&tree, 6));
 	bin_sort_tree_show(tree);
 	PD(bin_sort_tree_delete(&tree, 100));
+	bin_sort_tree_show(tree);
+	PD(bin_sort_tree_delete(&tree, 3));
 	bin_sort_tree_show(tree);
 
     return 0;
