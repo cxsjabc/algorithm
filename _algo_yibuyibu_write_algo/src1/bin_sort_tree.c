@@ -34,6 +34,33 @@ bin_sort_node *bin_sort_tree_create()
 	return node;
 }
 
+bin_sort_node *bin_sort_tree_create_from_arr(int arr[], int size, int **ppindex)
+{
+	pbin_sort_node node;
+	int v;
+	int index;
+	int *pindex = *ppindex;
+
+	index = *pindex;
+	v = arr[index];
+	if(v == 0) {
+		node = NULL;
+		*pindex = *pindex + 1;
+	}
+	else {
+		node = (pbin_sort_node)malloc(sizeof(bin_sort_node));
+		if(!node) {
+			printf("no memory!\n");
+			return NULL;
+		}
+		node->v = v;
+		*pindex = *pindex + 1; 
+		node->left = bin_sort_tree_create_from_arr(arr, size, ppindex);
+		node->right = bin_sort_tree_create_from_arr(arr, size, ppindex);
+	}
+	return node;
+}
+
 void bin_sort_tree_show(pbin_sort_tree tree)
 {
 	if(tree) {
@@ -77,6 +104,29 @@ int	bin_sort_tree_insert(pbin_sort_tree *pt, int v)
 	}
 }
 
+pbin_sort_node	find_max_node(pbin_sort_node node)
+{
+	if(node->right) {
+		return find_max_node(node->right);
+	} else
+		return node;
+}
+
+pbin_sort_node find_right_child_parent(pbin_sort_tree node, pbin_sort_node right_child)
+{
+	pbin_sort_node temp;
+
+	if(node == NULL)
+		return NULL;
+	if(node && node->right == right_child)
+		return node;
+	if((temp = find_right_child_parent(node->left, right_child)) != NULL)
+		return temp;
+	if((temp = find_right_child_parent(node->right, right_child)) != NULL)
+		return temp;
+	return NULL;
+}
+
 int	bin_sort_tree_delete(pbin_sort_tree *pt, int v)
 {
 	pbin_sort_node node;
@@ -101,16 +151,35 @@ int	bin_sort_tree_delete(pbin_sort_tree *pt, int v)
 			free(node);
 			return 0;
 		} else {
-			
+			pbin_sort_node left_max;
+			left_max = find_max_node(node->left);	
+			if(left_max == node->left) {
+				*pt = left_max;
+				(*pt)->right = node->right;
+				free(node);
+				return 0;
+			} else {
+				pbin_sort_node left_max_parent;
+				node->v = left_max->v;
+				left_max_parent = find_right_child_parent(node, left_max);
+				left_max_parent->right = left_max->left;
+				free(left_max);
+				return 0;
+			}
 		}
 	}
+	return -3;
 }
 
 int main()
 {
 	pbin_sort_tree tree;
-	
-	tree = bin_sort_tree_create();
+	int index = 0;	
+	int *pindex = &index;
+	int arr[] = {6, 3, 2, 0, 0, 5, 4, 0, 0, 0, 8, 0, 0};
+
+	//tree = bin_sort_tree_create();
+	tree = bin_sort_tree_create_from_arr(arr, ARR_SIZE(arr), &pindex);
 	bin_sort_tree_show(tree);
 	
 	PP(bin_sort_tree_find(tree, 5));
@@ -121,5 +190,12 @@ int main()
 	PD(bin_sort_tree_insert(&tree, 10));
 	PD(bin_sort_tree_insert(&tree, 7));
 	PD(bin_sort_tree_insert(&tree, 5));
+
+	bin_sort_tree_show(tree);
+	PD(bin_sort_tree_delete(&tree, 6));
+	bin_sort_tree_show(tree);
+	PD(bin_sort_tree_delete(&tree, 100));
+	bin_sort_tree_show(tree);
+
     return 0;
 }
